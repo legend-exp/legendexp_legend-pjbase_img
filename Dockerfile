@@ -74,24 +74,6 @@ RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
     "jax[cuda12]~=0.5.3"
 
 
-# Install dcraw and ImageMagick
-
-RUN apt-get update && apt-get install -y \
-        imagemagick dcraw \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-
-# Install device control development dependencies:
-
-RUN apt-get update && apt-get install -y \
-        snmp libsnmp-dev \
-        libmodbus-dev \
-        libusb-1.0-0-dev \
-        gphoto2 \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* \
-    && (cd "$PIXI_GLOBALPRJ" && pixi add pyserial)
-
-
 # Install additional packages and clean up:
 
 RUN apt-get update && apt-get install -y \
