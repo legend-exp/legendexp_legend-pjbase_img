@@ -1,4 +1,4 @@
-FROM mppmu/julia-conda:ub22-jl111-mf-cu126
+FROM mppmu/julia-conda:ub24-jl111-pixi-cu126
 
 # User and workdir settings:
 
@@ -90,7 +90,7 @@ RUN true \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
     && provisioning/install-sw.sh root 6.28.00 /usr/local \
 # Required for ROOT Jupyter kernel
-    && mamba install -y metakernel
+    && (cd "$PIXI_GLOBALPRJ" && pixi add metakernel)
 
 # Make PyROOT visible
 # Accessing ROOT via Cxx.jl requires RTTI
@@ -104,7 +104,7 @@ ENV \
 
 # Install additional Science-related Python packages:
 
-RUN mamba install -y \
+RUN cd "$PIXI_GLOBALPRJ" && pixi add \
     lz4 zstandard \
     tensorboard \
     ultranest \
@@ -124,28 +124,26 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 
 # Install Snakemake and panoptes-ui
-# (Temporary: Pin jinja2 to v3.0, >v3.1 causes trouble for Jupyter of Anaconda 2021.11.)
 
 RUN true \
-    && mamba install -c conda-forge -c bioconda -y \
+    && cd "$PIXI_GLOBALPRJ" && pixi add \
         snakemake panoptes-ui \
         sqlite flask humanfriendly marshmallow pytest requests sqlalchemy \
-        jinja2=3.0
+        jinja2
 
 
 # Install PyTorch:
 
-# Need to use pip to make PyTorch uses system-wide CUDA libs:
-RUN pip3 install --upgrade --index-url https://download.pytorch.org/whl/cu126 \
-    torch~=2.6.0 \
+RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
+    torch~=2.7.1 \
     torchvision \
     torchaudio
 
 
 # Install JAX:
 
-RUN pip3 install --upgrade \
-    "jax[cuda12]~=0.5.2"
+RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
+    "jax[cuda12]~=0.5.3"
 
 
 # Install dcraw and ImageMagick
@@ -163,7 +161,7 @@ RUN apt-get update && apt-get install -y \
         libusb-1.0-0-dev \
         gphoto2 \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
-    && mamba install -y pyserial
+    && (cd "$PIXI_GLOBALPRJ" && pixi add pyserial)
 
 
 # Install additional packages and clean up:
@@ -186,7 +184,7 @@ RUN apt-get update && apt-get install -y \
 
 # Set container-specific SWMOD_HOSTSPEC:
 
-ENV SWMOD_HOSTSPEC="linux-ubuntu-22.04-x86_64-3f6848ed"
+ENV SWMOD_HOSTSPEC="linux-ubuntu-24.04-x86_64-87523977"
 
 
 # Final steps

@@ -46,7 +46,7 @@ download_url() {
 
 
 pkg_install() {
-    source disable-conda.sh
+    source disable-pixi.sh
 
     DOWNLOAD_URL=`download_url "${PACKAGE_VERSION}"`
     echo "INFO: Download URL: \"${DOWNLOAD_URL}\"." >&2

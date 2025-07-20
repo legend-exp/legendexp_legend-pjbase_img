@@ -4,7 +4,7 @@ This repository contains the files necessary to generate a CentOS-7 based Docker
 
 The Docker image includes the following Software:
 
-* Python via miniforge (Python 3.12)
+* Python via Pixi (Python 3.12)
 * CERN ROOT v6.28
 * CUDA v12.6
 * Geant4 v10.5 and CLHep
@@ -253,12 +253,12 @@ This will start a container with an interactive X11-enabled bash shell. You shou
 
 ## Building Software
 
-### Disabling Anaconda
+### Disabling Pixi
 
-When compiling/linking software, files like `/opt/anaconda3/bin/*-config` can get in the way, they can cause software to link against Anaconda libraries (which are not on `$LD_LIBRARY_PATH`, by default) instead of system libraries. You can use
+When compiling/linking software, files like `/opt/pixi/.../bin/*-config` can get in the way, they can cause software to link against Pixi-provided libraries (which are not on `$LD_LIBRARY_PATH`, by default) instead of system libraries. You can use
 
 ```shell
-source disable-conda.sh
+source disable-pixi.sh
 ```
 
-to remove `"/opt/anaconda3/bin"` and `"/opt/anaconda3/condabin"` from `$PATH` in your current shell or build script.
+to remove Pixi-related directories from `$PATH` in your current shell or build script.

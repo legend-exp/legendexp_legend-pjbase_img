@@ -5,7 +5,7 @@
 DEFAULT_BUILD_OPTS="-Dbuiltin_davix=ON -Dbuiltin_lzma=ON -Dbuiltin_pcre=ON -Dbuiltin_unuran=ON -Dbuiltin_vc=ON -Dbuiltin_vdt=ON -Dbuiltin_veccore=ON -Dbuiltin_zlib=ON -Dbuiltin_zstd=OFF -Dfortran=ON -Dminuit2=ON -Dpythia8=OFF -Dshadowpw=ON -Dsoversion=ON -Dunuran=ON"
 
 pkg_install() {
-    source disable-conda.sh
+    source disable-pixi.sh
     
     DOWNLOAD_URL="https://root.cern/download/root_v${PACKAGE_VERSION}.source.tar.gz"
     echo "INFO: Download URL: \"${DOWNLOAD_URL}\"." >&2
