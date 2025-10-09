@@ -23,13 +23,6 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
-# Install HDF5:
-
-COPY provisioning/install-sw-scripts/hdf5-* provisioning/install-sw-scripts/
-
-RUN provisioning/install-sw.sh hdf5-srcbuild 1.12.3 /usr/local
-
-
 # Install additional Science-related Python packages:
 
 RUN cd "$PIXI_GLOBALPRJ" && pixi add \
