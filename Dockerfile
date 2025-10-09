@@ -42,15 +42,6 @@ RUN cd "$PIXI_GLOBALPRJ" && pixi add \
     numba
 
 
-# Install Xpra:
-
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        xpra python3-uinput python3-paramiko python3-websockify \
-        pwgen apg \
-        xterm mlterm rxvt-unicode \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-
 # Install Snakemake and panoptes-ui
 
 RUN true \
@@ -94,7 +85,7 @@ RUN apt-get update && apt-get install -y \
 
 # Set container-specific SWMOD_HOSTSPEC:
 
-ENV SWMOD_HOSTSPEC="linux-ubuntu-24.04-x86_64-87523977"
+ENV SWMOD_HOSTSPEC="linux-ubuntu-24.04-x86_64-0a4a1dfc"
 
 
 # Final steps
