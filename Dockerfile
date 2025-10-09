@@ -49,13 +49,10 @@ RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
 # Install additional packages and clean up:
 
 RUN apt-get update && apt-get install -y \
-        valgrind linux-tools-common \
+        linux-tools-common \
         uuid-runtime \
         \
-        pbzip2 zstd libzstd-dev \
-        \
-        libreadline-dev \
-        graphviz-dev \
+        pbzip2 zstd\
         \
         poppler-utils \
         pre-commit \
