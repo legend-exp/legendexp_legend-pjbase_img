@@ -13,14 +13,17 @@ COPY provisioning/install-sw.sh /root/provisioning/
 
 # Install additional Science-related Python packages:
 
-RUN cd "$PIXI_GLOBALPRJ" && pixi add \
-    lz4 zstandard \
-    tensorboard \
-    ultranest \
-    uproot awkward0 uproot3 awkward uproot4 xxhash \
-    hepunits particle \
-    iminuit \
-    numba
+RUN cd "$PIXI_GLOBALPRJ" \
+    && pixi add \
+        lz4 zstandard \
+        tensorboard \
+        ultranest \
+        uproot awkward0 uproot3 awkward uproot4 xxhash \
+        hepunits particle \
+        iminuit \
+        numba \
+    && pixi add --pypi \
+        hist[plot]
 
 
 # Install Snakemake and panoptes-ui
