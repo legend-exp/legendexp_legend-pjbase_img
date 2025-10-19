@@ -38,7 +38,7 @@ RUN true \
 # Install PyTorch:
 
 RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
-    torch~=2.8.0 \
+    torch~=2.9.0 \
     torchvision \
     torchaudio
 
@@ -46,7 +46,7 @@ RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
 # Install JAX:
 
 RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
-    "jax[cuda12]~=0.7.2"
+    "jax[cuda12]~=0.8.0"
 
 
 # Install additional packages and clean up:
