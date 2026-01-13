@@ -46,7 +46,7 @@ RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
 # Install JAX:
 
 RUN cd "$PIXI_GLOBALPRJ" && pixi add --pypi \
-    "jax[cuda12]~=0.8.1"
+    "jax[cuda12]~=0.8.2"
 
 
 # Install additional packages and clean up:
