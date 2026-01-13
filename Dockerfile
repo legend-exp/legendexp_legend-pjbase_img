@@ -21,7 +21,6 @@ RUN cd "$PIXI_GLOBALPRJ" \
         uproot awkward0 uproot3 awkward uproot4 xxhash \
         hepunits particle \
         iminuit \
-        numba \
     && pixi add --pypi \
         hist[plot]
 
