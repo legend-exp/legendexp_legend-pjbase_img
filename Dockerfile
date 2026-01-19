@@ -1,4 +1,4 @@
-FROM mppmu/julia-conda:ub24-jl112-pixi-cu128
+FROM mppmu/julia-python:ub24-jl112-pixi-cu128
 
 # User and workdir settings:
 
