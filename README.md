@@ -5,9 +5,9 @@ This repository contains the files necessary to generate a CentOS-7 based Docker
 The Docker image includes the following Software:
 
 * Python via Pixi (Python 3.12)
-* CUDA v12.6
+* CUDA v12.8
 * HDF5 (thread-safe build)
-* Julia v1.12 (default), v1.11 and v1.10
+* Julia v1.12 (default), v1.10
 * PyTorch and JAX
 * Snakemake with panoptes web-GUI
 * Node.js
